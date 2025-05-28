@@ -3,9 +3,7 @@ import ConsultationButton from "@/components/shared/ConsultationButton";
 import HeroKeyPoints from "./HeroKeyPoints";
 import HeroText from "./HeroText";
 
-type Props = {};
-
-function HeroContent({}: Props) {
+function HeroContent() {
   return (
     <div
       className="md:w-1/2 mb-10 md:mb-0 md:pr-10 text-center md:text-left"

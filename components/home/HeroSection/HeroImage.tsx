@@ -1,9 +1,6 @@
 import Image from "next/image";
-import React from "react";
 
-type Props = {};
-
-function HeroImage({}: Props) {
+function HeroImage() {
   return (
     <div
       className="md:w-1/2"
