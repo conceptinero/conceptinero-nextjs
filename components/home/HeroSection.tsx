@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { BookConsultation } from "@/components/shared/BookConsultation";
 import { motion } from "framer-motion";
 
 export function HeroSection() {
@@ -122,8 +121,6 @@ export function HeroSection() {
           </div>
         </div>
       </div>
-
-      <BookConsultation open={consultationOpen} setOpen={setConsultationOpen} />
     </section>
   );
 }
