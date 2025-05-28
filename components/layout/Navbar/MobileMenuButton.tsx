@@ -2,11 +2,8 @@
 import { useIsMobileMenuOpen } from "@/hooks/useIsMobileMenuOpen";
 import { useToggleMobileMenu } from "@/hooks/useToggleMobileMenu";
 import { X, Menu } from "lucide-react";
-import React from "react";
 
-type Props = {};
-
-function MobileMenuButton({}: Props) {
+function MobileMenuButton() {
   const isOpen = useIsMobileMenuOpen();
   const toggleMenu = useToggleMobileMenu();
   return (

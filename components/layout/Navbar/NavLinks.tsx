@@ -1,6 +1,6 @@
 import React from "react";
 import NavLink from "./NavLink";
-import { links } from "../data";
+import { links } from "@/components/data";
 
 function NavLinks({ type = "desktop" }: { type?: "desktop" | "mobile" }) {
   return (

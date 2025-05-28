@@ -17,7 +17,7 @@ function HeroContent() {
         <Button
           size="lg"
           variant="outline"
-          className="border-blue-600 text-blue-600 hover:bg-blue-50 px-8"
+          className="border-blue-600 text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-600 px-8"
         >
           Learn More
         </Button>

@@ -4,6 +4,7 @@ import ConsultationButton from "@/components/shared/ConsultationButton";
 import MobileMenuButton from "./MobileMenuButton";
 import MobileNavigation from "./MobileNavigation";
 import MobileNavigationController from "./MobileNavigationController";
+import { ModeSwitcher } from "../ModeSwitcher";
 
 export function Navbar() {
   return (
@@ -17,6 +18,7 @@ export function Navbar() {
             <nav className="hidden md:flex items-center space-x-8">
               <NavLinks type="desktop" />
               <ConsultationButton />
+              <ModeSwitcher />
             </nav>
 
             {/* Mobile menu button */}

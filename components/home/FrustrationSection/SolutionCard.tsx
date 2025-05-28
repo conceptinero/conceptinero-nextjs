@@ -16,13 +16,12 @@ function SolutionCard() {
           </h3>
           <p className="text-gray-600 dark:text-gray-300 mb-4">
             We&apos;ve streamlined the SR&ED application process to make it
-            accessible and stress-free for businesses of all sizes. Our
-            dedicated industry-specialized consultants stay with you from start
-            to finish.
-          </p>
-          <p className="text-gray-600 dark:text-gray-300">
-            And with our success-based fee structure, you only pay when your
-            claim is approved.
+            accessible and <span className="font-bold">stress-free</span> for
+            businesses of all sizes. Our dedicated{" "}
+            <span className="font-bold">industry-specialized</span> consultants
+            stay with you from start to finish. And with our{" "}
+            <span className="font-bold">success-based fee</span> structure, you
+            only pay when your claim is approved.
           </p>
         </div>
         <div className="md:w-1/3 flex justify-center">

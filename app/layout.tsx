@@ -3,10 +3,11 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
-import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import { ThemeProvider } from "next-themes";
 import { Toaster } from "@/components/ui/sonner";
-import JotaiProvider from "@/components/providers/JotaiProvider";
+// import JotaiProvider from "@/components/providers/JotaiProvider";
 import { BookConsultation } from "@/components/layout/BookConsultation";
+import { Provider as JotaiProvider } from "jotai";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,8 +27,8 @@ export default function RootLayout({
       <body className={inter.className}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="light"
-          enableSystem
+          defaultTheme="dark"
+          enableSystem={false}
           disableTransitionOnChange
         >
           <JotaiProvider>

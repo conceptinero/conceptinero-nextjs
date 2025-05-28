@@ -1,24 +1,28 @@
 "use client";
+
+import { useCloseMobileMenu } from "@/hooks/useCloseMobileMenu";
 import { Button } from "../ui/button";
 import { useOpenModal } from "@/hooks/useOpenModal";
-
-{
-  /* <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8">
-  Book Free Consultation
-</Button>; */
-}
+import { cn } from "@/lib/utils";
 
 function ConsultationButton({
   size = "default",
+  className = "",
 }: {
   size?: "default" | "sm" | "lg" | "icon";
+  className?: string | undefined;
 }) {
   const openModal = useOpenModal();
+  const closeMobileMenu = useCloseMobileMenu();
+
   return (
     <Button
       size={size}
-      onClick={openModal}
-      className="bg-blue-600 hover:bg-blue-700 text-white"
+      onClick={() => {
+        closeMobileMenu();
+        openModal();
+      }}
+      className={cn("bg-blue-600 hover:bg-blue-700 text-white", className)}
     >
       Book Free Consultation
     </Button>

@@ -1,4 +1,4 @@
-import { industries } from "../data";
+import { industries } from "@/components/data";
 
 function Industries() {
   return (
