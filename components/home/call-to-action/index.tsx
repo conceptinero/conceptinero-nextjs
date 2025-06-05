@@ -1,6 +1,6 @@
-import { Button } from "@/components/ui/button";
 import AnimatedSection from "@/components/shared/AnimatedSection";
-import ConsultationButton from "@/components/shared/ConsultationButton";
+import { CTAButtons } from "./CTAButtons";
+import { CTAStats } from "./CTAStats";
 
 export function CTASection() {
   return (
@@ -21,32 +21,9 @@ export function CTASection() {
             business could receive in tax refunds. No obligation, no pressure.
           </p>
 
-          <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-            <ConsultationButton size="lg" />
+          <CTAButtons />
 
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-white text-white bg-inherit hover:bg-white  hover:text-blue-800 px-8 text-lg"
-            >
-              Learn More
-            </Button>
-          </div>
-
-          <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-            <div>
-              <p className="text-3xl font-bold text-white">No Upfront Fees</p>
-              <p className="text-blue-200">Success-based pricing only</p>
-            </div>
-            <div>
-              <p className="text-3xl font-bold text-white">15-Min Call</p>
-              <p className="text-blue-200">Quick initial assessment</p>
-            </div>
-            <div>
-              <p className="text-3xl font-bold text-white">Fast Response</p>
-              <p className="text-blue-200">Same-day callback guaranteed</p>
-            </div>
-          </div>
+          <CTAStats />
         </AnimatedSection>
       </div>
     </section>
