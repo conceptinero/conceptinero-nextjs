@@ -132,8 +132,7 @@ export const testimonials: Testimonial[] = [
     author: "Sarah Chen",
     position: "CTO, TechInnovate Solutions",
     company: "Software & IT",
-    image:
-      "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    image: "/testimonials/testimonial-1.webp",
   },
   {
     quote:
@@ -141,8 +140,7 @@ export const testimonials: Testimonial[] = [
     author: "Michael Patel",
     position: "CEO, MediTech Labs",
     company: "Healthcare & Medical Sciences",
-    image:
-      "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    image: "/testimonials/testimonial-2.webp",
   },
   {
     quote:
@@ -150,8 +148,7 @@ export const testimonials: Testimonial[] = [
     author: "Jennifer Wilson",
     position: "Director of Operations, Precision Manufacturing",
     company: "Manufacturing",
-    image:
-      "https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+    image: "/testimonials/testimonial-3.webp",
   },
 ];
 

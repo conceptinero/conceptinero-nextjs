@@ -15,7 +15,7 @@ function ImageColumn() {
         <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-blue-600 rounded-br-2xl z-0"></div>
         <div className="relative z-10 rounded-xl overflow-hidden shadow-xl">
           <Image
-            src="https://images.pexels.com/photos/3184306/pexels-photo-3184306.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+            src="/table-employees.webp"
             alt="Conceptinero team meeting"
             width={600}
             height={400}
