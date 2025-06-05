@@ -1,4 +1,4 @@
-import CurrentYear from "../CurrentYear";
+import CurrentYear from "./CurrentYear";
 import Link from "next/link";
 
 function Rights() {
