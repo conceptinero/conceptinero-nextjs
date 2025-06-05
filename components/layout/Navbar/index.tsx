@@ -4,7 +4,7 @@ import ConsultationButton from "@/components/shared/ConsultationButton";
 import MobileMenuButton from "./MobileMenuButton";
 import MobileNavigation from "./MobileNavigation";
 import MobileNavigationController from "./MobileNavigationController";
-import { ModeSwitcher } from "../ModeSwitcher";
+import { ModeSwitcher } from "./ModeSwitcher";
 
 export function Navbar() {
   return (

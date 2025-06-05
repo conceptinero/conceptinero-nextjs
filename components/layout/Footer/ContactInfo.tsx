@@ -1,41 +1,13 @@
-import { Mail, MapPin, Phone, LucideIcon } from "lucide-react";
+import { Contact, contacts } from "./footerData";
 
-const contacts: Contact[] = [
-  {
-    icon: Mail,
-    href: "mailto:kevin@conceptinero.com",
-    content: "kevin@conceptinero.com",
-  },
-  {
-    icon: Phone,
-    href: "tel:+16472999241",
-    content: "+1 (647) 299 9241",
-  },
-  {
-    icon: MapPin,
-    href: "https://maps.app.goo.gl/LuWyJK4UezZXxbKr8",
-    content: (
-      <>
-        196 Waldoncroft Cr.
-        <br />
-        Burlington, ON L7L 3A5
-        <br />
-        Canada
-      </>
-    ),
-  },
-];
-
-interface Contact {
-  icon: LucideIcon;
-  href: string;
-  content: React.ReactNode;
-}
-
-function ContactItem({ icon: Icon, href, content }: Contact) {
+function ContactItem({ icon: Icon, href, content, newTab }: Contact) {
   return (
     <li>
-      <a href={href} className="flex items-start">
+      <a
+        href={href}
+        className="flex items-start"
+        target={newTab ? "_blank" : "_self"}
+      >
         <Icon className="h-5 w-5 text-blue-600 mr-2 mt-0.5" />
         <span className="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 text-sm transition-colors duration-300">
           {content}

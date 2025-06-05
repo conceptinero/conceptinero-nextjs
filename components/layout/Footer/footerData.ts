@@ -1,3 +1,5 @@
+import { Mail, Phone, MapPin, LucideIcon } from "lucide-react";
+
 // Footer-specific data
 export const socialLinks = [
   {
@@ -22,9 +24,30 @@ export const socialLinks = [
   },
 ];
 
-// Instagram
-// Linkedin
-// Facebook
+export const contacts: Contact[] = [
+  {
+    icon: Mail,
+    href: "mailto:kevin@conceptinero.com",
+    content: "kevin@conceptinero.com",
+  },
+  {
+    icon: Phone,
+    href: "tel:+16472999241",
+    content: "+1 (647) 299 9241",
+  },
+  {
+    icon: MapPin,
+    href: "https://maps.app.goo.gl/LuWyJK4UezZXxbKr8",
+    content: "196 Waldoncroft Cr.\nBurlington, ON L7L 3A5\nCanada",
+  },
+];
+
+export type Contact = {
+  icon: LucideIcon;
+  href: string;
+  content: string;
+  newTab?: boolean;
+};
 
 export { industries } from "@/components/data";
 
