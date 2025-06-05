@@ -1,16 +1,12 @@
-"use client";
-
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
+import AnimatedSection from "@/components/shared/AnimatedSection";
+import ConsultationButton from "@/components/shared/ConsultationButton";
 
 export function CTASection() {
-  const [consultationOpen, setConsultationOpen] = useState(false);
-
   return (
     <section className="py-16 lg:py-24 bg-gradient-to-br from-blue-800 to-blue-900 dark:from-blue-900 dark:to-indigo-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
+        <AnimatedSection
           className="max-w-3xl mx-auto text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -26,17 +22,12 @@ export function CTASection() {
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-            <Button
-              size="lg"
-              onClick={() => setConsultationOpen(true)}
-              className="bg-white text-blue-900 hover:bg-blue-50 px-8 text-lg"
-            >
-              Book Free Consultation
-            </Button>
+            <ConsultationButton size="lg" />
+
             <Button
               size="lg"
               variant="outline"
-              className="border-white text-white hover:bg-blue-800/50 px-8 text-lg"
+              className="border-white text-white bg-inherit hover:bg-white  hover:text-blue-800 px-8 text-lg"
             >
               Learn More
             </Button>
@@ -56,7 +47,7 @@ export function CTASection() {
               <p className="text-blue-200">Same-day callback guaranteed</p>
             </div>
           </div>
-        </motion.div>
+        </AnimatedSection>
       </div>
     </section>
   );

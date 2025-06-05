@@ -1,40 +1,12 @@
-"use client";
-
-import { UserCheck, ThumbsUp, Target, Briefcase } from "lucide-react";
-import { motion } from "framer-motion";
-
-const features = [
-  {
-    icon: UserCheck,
-    title: "Dedicated Consultant",
-    description:
-      "Work with one consultant from start to finish. No passing you around from person to person.",
-  },
-  {
-    icon: ThumbsUp,
-    title: "Success Fee",
-    description:
-      "Only pay when your claim is successful. No upfront costs or hidden fees.",
-  },
-  {
-    icon: Target,
-    title: "95% Success Rate",
-    description:
-      "Our claims have a 94.25% approval rate, well above the industry average.",
-  },
-  {
-    icon: Briefcase,
-    title: "Deep Industry Focus",
-    description:
-      "Our consultants have technical backgrounds in the industries they serve.",
-  },
-];
+import { ThumbsUp } from "lucide-react";
+import { features } from "@/components/data";
+import AnimatedSection from "@/components/shared/AnimatedSection";
 
 export function WhyChooseSection() {
   return (
     <section className="py-16 lg:py-24 bg-white dark:bg-gray-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
+        <AnimatedSection
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -48,11 +20,11 @@ export function WhyChooseSection() {
             We specialize in maximizing your SR&ED tax credits with a
             stress-free experience.
           </p>
-        </motion.div>
+        </AnimatedSection>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {features.map((feature, index) => (
-            <motion.div
+            <AnimatedSection
               key={index}
               className="bg-gray-50 dark:bg-gray-900 rounded-xl p-8 border border-gray-100 dark:border-gray-800 flex flex-col items-center text-center h-full"
               initial={{ opacity: 0, y: 30 }}
@@ -69,11 +41,11 @@ export function WhyChooseSection() {
               <p className="text-gray-600 dark:text-gray-400 flex-grow">
                 {feature.description}
               </p>
-            </motion.div>
+            </AnimatedSection>
           ))}
         </div>
 
-        <motion.div
+        <AnimatedSection
           className="mt-16 text-center"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -93,7 +65,7 @@ export function WhyChooseSection() {
               </span>
             </div>
           </div>
-        </motion.div>
+        </AnimatedSection>
       </div>
     </section>
   );

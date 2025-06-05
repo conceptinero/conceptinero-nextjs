@@ -2,14 +2,15 @@ import { Button } from "@/components/ui/button";
 import ConsultationButton from "@/components/shared/ConsultationButton";
 import HeroKeyPoints from "./HeroKeyPoints";
 import HeroText from "./HeroText";
+import AnimatedSection from "@/components/shared/AnimatedSection";
 
 function HeroContent() {
   return (
-    <div
+    <AnimatedSection
       className="md:w-1/2 mb-10 md:mb-0 md:pr-10 text-center md:text-left"
-      // initial={{ opacity: 0, y: 20 }}
-      // animate={{ opacity: 1, y: 0 }}
-      // transition={{ duration: 0.1 }}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: 0 }}
     >
       <HeroText />
       <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center md:justify-start">
@@ -23,7 +24,7 @@ function HeroContent() {
         </Button>
       </div>
       <HeroKeyPoints />
-    </div>
+    </AnimatedSection>
   );
 }
 

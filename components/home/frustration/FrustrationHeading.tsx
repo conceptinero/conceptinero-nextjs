@@ -1,15 +1,16 @@
+import AnimatedSection from "@/components/shared/AnimatedSection";
 import React from "react";
 
 type Props = {};
 
 function FrustrationHeading({}: Props) {
   return (
-    <div
+    <AnimatedSection
       className="text-center mb-16"
-      // initial={{ opacity: 0, y: 20 }}
-      // whileInView={{ opacity: 1, y: 0 }}
-      // viewport={{ once: true }}
-      // transition={{ duration: 0.5 }}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
     >
       <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
         Don&apos;t Be Frustrated With the Complexity of Applying for SR&ED
@@ -18,7 +19,7 @@ function FrustrationHeading({}: Props) {
         The SR&ED program is notoriously complex, but with our experts by your
         side, the process becomes simple and stress-free.
       </p>
-    </div>
+    </AnimatedSection>
   );
 }
 

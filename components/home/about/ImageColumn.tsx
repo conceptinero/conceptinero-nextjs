@@ -1,13 +1,14 @@
+import AnimatedSection from "@/components/shared/AnimatedSection";
 import Image from "next/image";
 
 function ImageColumn() {
   return (
-    <div
-    //   className="lg:w-1/2 mb-10 lg:mb-0"
-    //   initial={{ opacity: 0, x: -30 }}
-    //   whileInView={{ opacity: 1, x: 0 }}
-    //   viewport={{ once: true }}
-    //   transition={{ duration: 0.5 }}
+    <AnimatedSection
+      className="lg:w-1/2 mb-10 lg:mb-0"
+      initial={{ opacity: 0, x: -30 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
     >
       <div className="relative">
         <div className="absolute -top-4 -left-4 w-24 h-24 bg-blue-600 rounded-tl-2xl z-0"></div>
@@ -22,7 +23,7 @@ function ImageColumn() {
           />
         </div>
       </div>
-    </div>
+    </AnimatedSection>
   );
 }
 

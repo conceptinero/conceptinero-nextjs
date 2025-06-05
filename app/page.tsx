@@ -1,6 +1,12 @@
-import { AboutSection } from "@/components/home/AboutSection";
-import { FrustrationSection } from "@/components/home/FrustrationSection";
-import { HeroSection } from "@/components/home/HeroSection";
+import {
+  AboutSection,
+  CTASection,
+  FrustrationSection,
+  HeroSection,
+  ProcessSection,
+  TestimonialsSection,
+  WhyChooseSection,
+} from "@/components/home";
 
 export default function Home() {
   return (
@@ -8,10 +14,10 @@ export default function Home() {
       <HeroSection />
       <FrustrationSection />
       <AboutSection />
-      {/* <WhyChooseSection /> */}
-      {/* <ProcessSection /> */}
-      {/* <TestimonialsSection /> */}
-      {/* <CTASection /> */}
+      <WhyChooseSection />
+      <ProcessSection />
+      <TestimonialsSection />
+      <CTASection />
     </>
   );
 }

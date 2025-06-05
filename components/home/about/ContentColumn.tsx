@@ -1,15 +1,16 @@
 import AboutHeading from "./AboutHeading";
 import AboutCards from "./AboutCards";
 import AboutIndustries from "./AboutIndustries";
+import AnimatedSection from "@/components/shared/AnimatedSection";
 
 function ContentColumn() {
   return (
-    <div
-    //   className="lg:w-1/2"
-    //   initial={{ opacity: 0, x: 30 }}
-    //   whileInView={{ opacity: 1, x: 0 }}
-    //   viewport={{ once: true }}
-    //   transition={{ duration: 0.5 }}
+    <AnimatedSection
+      className="lg:w-1/2"
+      initial={{ opacity: 0, x: 30 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
     >
       {/* <Badge
         variant="outline"
@@ -25,7 +26,7 @@ function ContentColumn() {
         stress of the SR&ED process.
       </p>
       <AboutIndustries />
-    </div>
+    </AnimatedSection>
   );
 }
 

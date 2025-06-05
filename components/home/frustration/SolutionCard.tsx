@@ -1,13 +1,14 @@
+import AnimatedSection from "@/components/shared/AnimatedSection";
 import { PieChart } from "lucide-react";
 
 function SolutionCard() {
   return (
-    <div
+    <AnimatedSection
       className="mt-16 bg-blue-50 dark:bg-blue-900/20 rounded-xl p-8 border border-blue-100 dark:border-blue-800/40"
-      // initial={{ opacity: 0 }}
-      // whileInView={{ opacity: 1 }}
-      // viewport={{ once: true }}
-      // transition={{ duration: 0.5, delay: 0.4 }}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: 0.4 }}
     >
       <div className="flex flex-col md:flex-row items-center">
         <div className="md:w-2/3 mb-6 md:mb-0 md:pr-8">
@@ -30,7 +31,7 @@ function SolutionCard() {
           </div>
         </div>
       </div>
-    </div>
+    </AnimatedSection>
   );
 }
 

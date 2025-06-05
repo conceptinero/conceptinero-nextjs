@@ -4,37 +4,8 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
-
-const testimonials = [
-  {
-    quote:
-      "Working with Conceptinero was a game-changer for our tech startup. They secured over $180,000 in SR&ED credits for us, which was critical for our R&D investments. Their process was smooth and their expertise was evident.",
-    author: "Sarah Chen",
-    position: "CTO, TechInnovate Solutions",
-    company: "Software & IT",
-    image:
-      "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-  },
-  {
-    quote:
-      "After struggling with SR&ED claims on our own for years, we brought in Conceptinero. They increased our claim amount by 43% and handled everything from documentation to CRA questions. I only wish we'd found them sooner.",
-    author: "Michael Patel",
-    position: "CEO, MediTech Labs",
-    company: "Healthcare & Medical Sciences",
-    image:
-      "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-  },
-  {
-    quote:
-      "As a manufacturing company, we were skeptical about whether our innovations qualified for SR&ED. Conceptinero not only confirmed our eligibility but secured us a $245,000 tax credit. Their industry knowledge was impressive.",
-    author: "Jennifer Wilson",
-    position: "Director of Operations, Precision Manufacturing",
-    company: "Manufacturing",
-    image:
-      "https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-  },
-];
+import AnimatedSection from "@/components/shared/AnimatedSection";
+import { testimonials } from "@/components/data";
 
 export function TestimonialsSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -86,7 +57,7 @@ export function TestimonialsSection() {
   return (
     <section className="py-16 lg:py-24 bg-white dark:bg-gray-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
+        <AnimatedSection
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -100,7 +71,7 @@ export function TestimonialsSection() {
             Success stories from companies that have trusted us with their SR&ED
             claims.
           </p>
-        </motion.div>
+        </AnimatedSection>
 
         <div
           className="relative max-w-4xl mx-auto"
