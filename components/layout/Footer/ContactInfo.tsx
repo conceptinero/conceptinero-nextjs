@@ -30,6 +30,7 @@ function ContactInfo() {
             icon={contact.icon}
             href={contact.href}
             content={contact.content}
+            newTab={contact.newTab}
           />
         ))}
       </ul>

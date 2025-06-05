@@ -29,16 +29,19 @@ export const contacts: Contact[] = [
     icon: Mail,
     href: "mailto:kevin@conceptinero.com",
     content: "kevin@conceptinero.com",
+    newTab: false,
   },
   {
     icon: Phone,
     href: "tel:+16472999241",
     content: "+1 (647) 299 9241",
+    newTab: false,
   },
   {
     icon: MapPin,
     href: "https://maps.app.goo.gl/LuWyJK4UezZXxbKr8",
     content: "196 Waldoncroft Cr.\nBurlington, ON L7L 3A5\nCanada",
+    newTab: true,
   },
 ];
 
@@ -46,7 +49,7 @@ export type Contact = {
   icon: LucideIcon;
   href: string;
   content: string;
-  newTab?: boolean;
+  newTab: boolean;
 };
 
 export { industries } from "@/components/data";
