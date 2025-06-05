@@ -1,9 +1,9 @@
 import { Separator } from "@/components/ui/separator";
 import Industries from "./Industries";
 import ContactInfo from "./ContactInfo";
-import QuickLinks from "./QuickLinks";
 import CompanyInfo from "./CompanyInfo";
 import Rights from "./Rights";
+import FooterLinks from "./FooterLinks";
 
 export function Footer() {
   return (
@@ -11,7 +11,14 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <CompanyInfo />
-          <QuickLinks />
+          <div>
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-900 dark:text-gray-100 mb-4">
+              Quick Links
+            </h3>
+            <ul className="space-y-2">
+              <FooterLinks />
+            </ul>
+          </div>
           <Industries />
           <ContactInfo />
         </div>

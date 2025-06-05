@@ -1,4 +1,4 @@
-import { stats, Status } from "@/components/data";
+import { stats, Status } from "../homeData";
 
 function AboutCards() {
   return (

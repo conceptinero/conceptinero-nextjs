@@ -1,4 +1,4 @@
-import { industriesWithColors } from "@/components/data";
+import { industriesWithColors } from "../homeData";
 import { Badge } from "@/components/ui/badge";
 
 export const colorClassMap: Record<string, string> = {

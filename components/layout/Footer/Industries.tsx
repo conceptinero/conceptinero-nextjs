@@ -1,4 +1,4 @@
-import { industries } from "@/components/data";
+import { industries } from "./footerData";
 
 function Industries() {
   return (
@@ -8,14 +8,20 @@ function Industries() {
       </h3>
       <ul className="space-y-2">
         {industries.map((industry) => (
-          <li key={industry}>
-            <span className="text-gray-600 dark:text-gray-400 text-sm">
-              {industry}
-            </span>
-          </li>
+          <IndustryLabel industry={industry} key={industry} />
         ))}
       </ul>
     </div>
+  );
+}
+
+function IndustryLabel({ industry }: { industry: string }) {
+  return (
+    <li>
+      <span className="text-gray-600 hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400 text-sm transition-colors duration-300">
+        {industry}
+      </span>
+    </li>
   );
 }
 

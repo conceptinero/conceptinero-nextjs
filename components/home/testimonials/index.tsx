@@ -1,4 +1,4 @@
-import { testimonials } from "@/components/data";
+import { testimonials } from "./testimonialsData";
 import { TestimonialsHeader } from "./TestimonialsHeader";
 import { TestimonialsCarousel } from "./TestimonialsCarousel";
 

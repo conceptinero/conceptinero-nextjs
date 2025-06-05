@@ -1,11 +1,11 @@
 import React from "react";
 import NavLink from "./NavLink";
-import { links } from "@/components/data";
+import { navigationLinks } from "../layoutData";
 
 function NavLinks({ type = "desktop" }: { type?: "desktop" | "mobile" }) {
   return (
     <>
-      {links.map((link) => (
+      {navigationLinks.map((link) => (
         <NavLink type={type} key={link.href} {...link} />
       ))}
     </>

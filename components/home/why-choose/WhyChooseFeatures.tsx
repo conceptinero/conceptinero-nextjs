@@ -1,4 +1,4 @@
-import { features } from "@/components/data";
+import { features } from "./whyChooseData";
 import AnimatedSection from "@/components/shared/AnimatedSection";
 
 export function WhyChooseFeatures() {

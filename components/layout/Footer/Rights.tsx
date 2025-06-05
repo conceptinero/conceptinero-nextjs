@@ -1,9 +1,7 @@
 import CurrentYear from "../CurrentYear";
 import Link from "next/link";
 
-type Props = {};
-
-function Rights({}: Props) {
+function Rights() {
   return (
     <div className="flex flex-col md:flex-row justify-between items-center">
       <p className="text-xs text-gray-500 dark:text-gray-400">

@@ -1,4 +1,4 @@
-import { steps } from "@/components/data";
+import { steps } from "./processData";
 import AnimatedSection from "@/components/shared/AnimatedSection";
 
 export function ProcessSteps() {
