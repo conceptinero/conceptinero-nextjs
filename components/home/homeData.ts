@@ -1,6 +1,4 @@
 import { industries } from "@/components/data";
-import { ForwardRefExoticComponent, RefAttributes } from "react";
-import { LucideProps } from "lucide-react";
 
 // Shared data used across multiple home sections
 export const stats: Status[] = [
@@ -27,7 +25,3 @@ export type IndustryWithColor = {
   industry: string;
   color: string;
 };
-
-export type IconComponent = ForwardRefExoticComponent<
-  Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>
->;

@@ -1,4 +1,5 @@
 import AnimatedSection from "@/components/shared/AnimatedSection";
+import HiglightText from "@/components/ui/HiglightText";
 import React from "react";
 
 type Props = {};
@@ -19,10 +20,10 @@ function FrustrationHeading({}: Props) {
         Business owners tell us they want to get as much of their R&D reimbursed
         from the CRA as possible, but find it difficult to submit tax claims
         that stand up to the scrutiny of the CRA.{" "}
-        <span className="text-blue-600 font-semibold">
+        <HiglightText>
           Many companies have had a bad experience with SR&ED consulting firms
           who have filed a claim on their behalf.
-        </span>
+        </HiglightText>
       </p>
     </AnimatedSection>
   );

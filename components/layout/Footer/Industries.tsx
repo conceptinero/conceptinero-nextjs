@@ -1,4 +1,4 @@
-import { industries } from "./footerData";
+import { industries } from "@/components/data";
 
 function Industries() {
   return (

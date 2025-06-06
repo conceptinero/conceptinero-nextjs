@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import ConsultationButton from "@/components/shared/ConsultationButton";
 import AnimatedSection from "@/components/shared/AnimatedSection";
 import TickIcon from "@/icons/TickIcon";
+import HiglightText from "@/components/ui/HiglightText";
 
 const keyPoints = ["94.25% Success Rate", "$152K Average Claim"];
 
@@ -21,10 +22,9 @@ function HeroContent() {
         At Conceptinero, our SR&ED consultants specialize in Medical Science,
         Software, and Manufacturing industries.
         <br />
-        We get CRA to{" "}
-        <span className="text-blue-600 font-semibold">refund</span> up to{" "}
-        <span className="text-blue-600 font-semibold">65%</span> of your
-        development <span className="text-blue-600 font-semibold">costs</span>
+        We get CRA to <HiglightText>refund</HiglightText> up to{" "}
+        <HiglightText>65%</HiglightText> of your development{" "}
+        <HiglightText>costs</HiglightText>
       </p>
 
       {/* Buttons */}

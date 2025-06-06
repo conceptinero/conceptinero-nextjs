@@ -4,7 +4,10 @@ import ConsultationButton from "@/components/shared/ConsultationButton";
 export function CTAButtons() {
   return (
     <div className="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-      <ConsultationButton size="lg" />
+      <ConsultationButton
+        size="lg"
+        className="bg-white text-blue-600 hover:bg-blue-50"
+      />
 
       <Button
         size="lg"

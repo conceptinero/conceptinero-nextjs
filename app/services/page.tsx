@@ -429,6 +429,7 @@ export default function ServicesPage() {
                           src={industry.image}
                           alt={industry.name}
                           fill
+                          priority
                           className="object-cover"
                         />
                       </div>

@@ -3,8 +3,8 @@ import {
   ClipboardList,
   FileCheck,
   CreditCard,
+  LucideIcon,
 } from "lucide-react";
-import { IconComponent } from "../homeData";
 
 export const steps = [
   {
@@ -39,6 +39,6 @@ export const steps = [
 export type Step = {
   title: string;
   description: string;
-  icon: IconComponent;
+  icon: LucideIcon;
   color: string;
 };

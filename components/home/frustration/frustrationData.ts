@@ -1,5 +1,4 @@
-import { XCircle, Dumbbell, FileCode } from "lucide-react";
-import { IconComponent } from "../homeData";
+import { XCircle, Dumbbell, FileCode, LucideIcon } from "lucide-react";
 
 export const frustrationItems = [
   {
@@ -25,5 +24,5 @@ export const frustrationItems = [
 export type FrustrationItem = {
   title: string;
   description: string;
-  icon: IconComponent;
+  icon: LucideIcon;
 };

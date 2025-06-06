@@ -1,5 +1,10 @@
-import { UserCheck, ThumbsUp, Target, Briefcase } from "lucide-react";
-import { IconComponent } from "../homeData";
+import {
+  UserCheck,
+  ThumbsUp,
+  Target,
+  Briefcase,
+  LucideIcon,
+} from "lucide-react";
 
 export const features = [
   {
@@ -31,5 +36,5 @@ export const features = [
 export type Feature = {
   title: string;
   description: string;
-  icon: IconComponent;
+  icon: LucideIcon;
 };

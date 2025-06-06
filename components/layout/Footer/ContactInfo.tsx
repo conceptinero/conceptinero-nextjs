@@ -1,4 +1,4 @@
-import { Contact, contacts } from "./footerData";
+import { Contact, contacts } from "@/components/data";
 
 function ContactItem({ icon: Icon, href, content, newTab }: Contact) {
   return (
