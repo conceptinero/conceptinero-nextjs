@@ -1,4 +1,3 @@
-import { Mail, Phone, MapPin } from "lucide-react";
 import React from "react";
 import ConsultationButton from "../shared/ConsultationButton";
 import { Contact, contacts } from "../data";
@@ -32,21 +31,23 @@ function ContactInformation() {
 
 function ContactItem({ icon: Icon, title, href, content, newTab }: Contact) {
   return (
-    <a
-      className="flex items-start "
-      href={href}
-      target={newTab ? "_blank" : "_self"}
-    >
-      <div className="bg-blue-100 dark:bg-blue-900/30 p-3 rounded-full mr-4">
-        <Icon className="h-6 w-6 text-blue-600" />
-      </div>
-      <div>
-        <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
-          {title}
-        </h3>
-        <p className="text-gray-600 dark:text-gray-300">{content}</p>
-      </div>
-    </a>
+    <div className="flex items-start ">
+      <a
+        className="flex items-start"
+        href={href}
+        target={newTab ? "_blank" : "_self"}
+      >
+        <div className="bg-blue-100 dark:bg-blue-900/30 p-3 rounded-full mr-4">
+          <Icon className="h-6 w-6 text-blue-600" />
+        </div>
+        <div>
+          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
+            {title}
+          </h3>
+          <p className="text-gray-600 dark:text-gray-300">{content}</p>
+        </div>
+      </a>
+    </div>
   );
 }
 
