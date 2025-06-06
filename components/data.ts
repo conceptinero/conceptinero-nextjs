@@ -37,5 +37,5 @@ export type Contact = {
   href: string;
   content: string;
   newTab: boolean;
-  title: string;
+  title?: string;
 };
