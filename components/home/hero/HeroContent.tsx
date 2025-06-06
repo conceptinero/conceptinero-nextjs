@@ -20,6 +20,11 @@ function HeroContent() {
       <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl">
         At Conceptinero, our SR&ED consultants specialize in Medical Science,
         Software, and Manufacturing industries.
+        <br />
+        We get CRA to{" "}
+        <span className="text-blue-600 font-semibold">refund</span> up to{" "}
+        <span className="text-blue-600 font-semibold">65%</span> of your
+        development <span className="text-blue-600 font-semibold">costs</span>
       </p>
 
       {/* Buttons */}

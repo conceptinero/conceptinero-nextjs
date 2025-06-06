@@ -6,25 +6,25 @@ export const features = [
     icon: UserCheck,
     title: "Dedicated Consultant",
     description:
-      "Work with one consultant from start to finish. No passing you around from person to person.",
+      "You get full service from a dedicated consultant who will be with you from start to end.",
   },
   {
     icon: ThumbsUp,
     title: "Success Fee",
     description:
-      "Only pay when your claim is successful. No upfront costs or hidden fees.",
+      "Our fee structure means we only get paid when you get paid. It's a win-win situation for you.",
   },
   {
     icon: Target,
     title: "95% Success Rate",
     description:
-      "Our claims have a 94.25% approval rate, well above the industry average.",
+      "We have submitted $50 Million in claims to CRA. Over 320 were Accepted As Filed, for an average $146,000 per company!",
   },
   {
     icon: Briefcase,
     title: "Deep Industry Focus",
     description:
-      "Our consultants have technical backgrounds in the industries they serve.",
+      "We focus on IT-related claims, Manufacturing and Medical Industries. We specialize in these industries and we know the CRA.",
   },
 ];
 

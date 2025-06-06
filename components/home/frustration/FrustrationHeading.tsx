@@ -15,9 +15,14 @@ function FrustrationHeading({}: Props) {
       <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
         Don&apos;t Be Frustrated With the Complexity of Applying for SR&ED
       </h2>
-      <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-        The SR&ED program is notoriously complex, but with our experts by your
-        side, the process becomes simple and stress-free.
+      <p className="text-lg text-gray-600 dark:text-gray-400 max-w-4xl mx-auto">
+        Business owners tell us they want to get as much of their R&D reimbursed
+        from the CRA as possible, but find it difficult to submit tax claims
+        that stand up to the scrutiny of the CRA.{" "}
+        <span className="text-blue-600 font-semibold">
+          Many companies have had a bad experience with SR&ED consulting firms
+          who have filed a claim on their behalf.
+        </span>
       </p>
     </AnimatedSection>
   );

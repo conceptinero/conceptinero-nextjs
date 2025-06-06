@@ -18,10 +18,10 @@ export function TestimonialCard({
 }: TestimonialCardProps) {
   return (
     <div
-      className={`bg-gray-50 dark:bg-gray-900 rounded-xl p-8 md:p-12 shadow-sm border border-gray-100 dark:border-gray-800 ${className}`}
+      className={`h-full bg-gray-50 dark:bg-gray-900 rounded-xl p-8 md:p-12 shadow-sm border border-gray-100 dark:border-gray-800 ${className}`}
     >
-      <div className="flex flex-col md:flex-row items-center">
-        <div className="md:w-1/3 mb-6 md:mb-0 flex justify-center">
+      <div className="flex-col md:flex-row justify-center items-center h-full">
+        <div className="md:w-1/3 mb-6 md:mb-0 flex justify-center items-center">
           <div className="relative w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden border-4 border-white dark:border-gray-800 shadow-md">
             <Image
               src={testimonial.image}

@@ -11,13 +11,13 @@ export const frustrationItems = [
   {
     title: "Having to do the heavy lifting",
     description:
-      "We handle the complex paperwork and calculations, so you can focus on running your business.",
+      "SR&ED consulting firms may want your team to create the technical project description and prepare all documentation.",
     icon: Dumbbell,
   },
   {
     title: "No IT or software experience",
     description:
-      "Our consultants have technical backgrounds in the industries they serve, ensuring accurate claims.",
+      "SR&ED consultants often find it hard to identify what fits the definition of SR&ED. There is a shortage of experienced consultants.",
     icon: FileCode,
   },
 ];

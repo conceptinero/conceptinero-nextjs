@@ -66,7 +66,7 @@ export function TestimonialsCarousel({
 
   return (
     <div
-      className="relative max-w-4xl mx-auto"
+      className="relative max-w-5xl mx-auto"
       ref={sliderRef}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
@@ -91,7 +91,7 @@ export function TestimonialsCarousel({
       <Button
         variant="outline"
         size="icon"
-        className="absolute top-1/2 left-0 -translate-y-1/2 -translate-x-1/2 md:-translate-x-6 bg-white dark:bg-gray-800 rounded-full shadow-md z-10"
+        className="absolute top-1/2 -left-3 -translate-y-1/2 -translate-x-1/2 md:-translate-x-6 bg-white dark:bg-gray-800 rounded-full shadow-md z-10"
         onClick={handlePrev}
       >
         <ChevronLeft className="h-5 w-5" />
@@ -100,7 +100,7 @@ export function TestimonialsCarousel({
       <Button
         variant="outline"
         size="icon"
-        className="absolute top-1/2 right-0 -translate-y-1/2 translate-x-1/2 md:translate-x-6 bg-white dark:bg-gray-800 rounded-full shadow-md z-10"
+        className="absolute top-1/2 -right-3 -translate-y-1/2 translate-x-1/2 md:translate-x-6 bg-white dark:bg-gray-800 rounded-full shadow-md z-10"
         onClick={handleNext}
       >
         <ChevronRight className="h-5 w-5" />

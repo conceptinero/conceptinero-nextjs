@@ -1,4 +1,5 @@
 import AnimatedSection from "@/components/shared/AnimatedSection";
+import HiglightText from "@/components/ui/HiglightText";
 import { PieChart } from "lucide-react";
 
 function SolutionCard() {
@@ -16,13 +17,26 @@ function SolutionCard() {
             Our Solution: Simplified SR&ED Process
           </h3>
           <p className="text-gray-600 dark:text-gray-300 mb-4">
-            We&apos;ve streamlined the SR&ED application process to make it
-            accessible and <span className="font-bold">stress-free</span> for
-            businesses of all sizes. Our dedicated{" "}
-            <span className="font-bold">industry-specialized</span> consultants
-            stay with you from start to finish. And with our{" "}
-            <span className="font-bold">success-based fee</span> structure, you
-            only pay when your claim is approved.
+            We are a <HiglightText>full-service</HiglightText> SR&ED Consulting
+            Firm specialized in the{" "}
+            <HiglightText>software industry</HiglightText>.
+            <br />
+            <br />
+            We engage with you to assess the technical and financial viability
+            and make sure your claim gets approved by CRA with{" "}
+            <HiglightText>minimal audit risk</HiglightText>.
+            <br />
+            <br />
+            Unlike larger SR&ED consulting firms, we offer{" "}
+            <HiglightText>full service</HiglightText> from an{" "}
+            <HiglightText>individual consultant</HiglightText> who gets to know
+            consultant who gets to know your team and fully manages your CRA
+            claim.
+            <br />
+            <br />
+            We don&apos;t expect you to do the heavy lifting, which means
+            maximum results with minimal input from your team so{" "}
+            <HiglightText>you can focus on the business.</HiglightText>
           </p>
         </div>
         <div className="md:w-1/3 flex justify-center">
