@@ -1,6 +1,4 @@
 import AnimatedSection from "@/components/shared/AnimatedSection";
-import MapSection from "@/components/contact-us/MapSection";
-import FAQSection from "@/components/contact-us/FAQSection";
 import ContactForm from "@/components/contact-us/ContactForm";
 import ContactInformation from "@/components/contact-us/ContactInformation";
 
@@ -44,10 +42,6 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-      <MapSection />
-
-      {/* FAQ Section */}
-      <FAQSection />
     </>
   );
 }
