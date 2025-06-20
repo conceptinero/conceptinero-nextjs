@@ -32,11 +32,7 @@ function ContactInformation() {
 function ContactItem({ icon: Icon, title, href, content }: Contact) {
   return (
     <div className="flex items-start ">
-      <a
-        className="flex items-start"
-        href={href}
-        // target={newTab ? "_blank" : "_self"}
-      >
+      <a className="flex items-start" href={href}>
         <div className="bg-blue-100 dark:bg-blue-900/30 p-3 rounded-full mr-4">
           <Icon className="h-6 w-6 text-blue-600" />
         </div>
