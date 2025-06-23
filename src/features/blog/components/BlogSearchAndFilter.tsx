@@ -1,12 +1,12 @@
 "use client";
 
-import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Search } from "lucide-react";
 import AnimatedSection from "@/components/shared/AnimatedSection";
 import { BlogPost } from "../types";
+import { useBlogSearch } from "../hooks";
 import PostsGrid from "./PostsGrid";
 
 interface BlogSearchAndFilterProps {
@@ -18,22 +18,15 @@ export default function BlogSearchAndFilter({
   posts,
   categories,
 }: BlogSearchAndFilterProps) {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState("All");
-
-  const filteredPosts = posts.filter((post) => {
-    const matchesSearch =
-      post.title.toLowerCase().includes(searchQuery) ||
-      post.description.toLowerCase().includes(searchQuery);
-    const matchesCategory =
-      selectedCategory === "All" || post.categories.includes(selectedCategory);
-    return matchesSearch && matchesCategory;
-  });
-
-  const clearFilters = () => {
-    setSearchQuery("");
-    setSelectedCategory("All");
-  };
+  const {
+    searchQuery,
+    setSearchQuery,
+    selectedCategory,
+    setSelectedCategory,
+    filteredPosts,
+    clearFilters,
+    hasActiveFilters,
+  } = useBlogSearch({ posts });
 
   return (
     <>
@@ -52,13 +45,19 @@ export default function BlogSearchAndFilter({
             placeholder="Search articles..."
             className="pl-10 py-6 text-base rounded-full border-gray-200 dark:border-gray-700 shadow-sm focus:ring-blue-500 focus:border-blue-500"
             value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value.toLowerCase())}
+            onChange={(e) => setSearchQuery(e.target.value)}
           />
         </div>
       </AnimatedSection>
 
       {/* Category Filter */}
-      <div className="flex flex-wrap gap-3 justify-center mb-12">
+      <AnimatedSection
+        className="flex flex-wrap gap-3 justify-center mb-12"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.6, delay: 0.1 }}
+      >
         {categories.map((category, index) => (
           <Badge
             key={index}
@@ -73,10 +72,15 @@ export default function BlogSearchAndFilter({
             {category}
           </Badge>
         ))}
-      </div>
+      </AnimatedSection>
 
       {/* Posts Grid */}
-      <div>
+      <AnimatedSection
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+      >
         {filteredPosts.length > 0 ? (
           <PostsGrid posts={filteredPosts} />
         ) : (
@@ -84,10 +88,12 @@ export default function BlogSearchAndFilter({
             <p className="text-xl text-gray-600 dark:text-gray-400 mb-4">
               No articles found matching your search criteria.
             </p>
-            <Button onClick={clearFilters}>Clear Filters</Button>
+            {hasActiveFilters && (
+              <Button onClick={clearFilters}>Clear Filters</Button>
+            )}
           </div>
         )}
-      </div>
+      </AnimatedSection>
     </>
   );
 }

@@ -1,4 +1,4 @@
-import { transformSanityPost } from "@/sanity/lib/blogService";
+import { transformSanityPost } from "./services";
 
 // Transformed blog post type
 export type BlogPost = ReturnType<typeof transformSanityPost>;

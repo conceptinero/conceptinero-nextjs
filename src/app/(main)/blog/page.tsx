@@ -1,9 +1,9 @@
+import { BlogPage } from "@/features/blog";
 import {
   getAllPosts,
   getAllCategories,
   transformSanityPost,
-} from "@/sanity/lib/blogService";
-import BlogPage from "@/features/blog/BlogPage";
+} from "@/features/blog/services";
 import { sortPostsByDate } from "@/features/blog/utils";
 
 // Transform categories for the filter
@@ -51,4 +51,4 @@ export default async function BlogPageRoute() {
   }
 }
 
-export const revalidate = 3600; // Revalidate every hour
+export const revalidate = 3600;

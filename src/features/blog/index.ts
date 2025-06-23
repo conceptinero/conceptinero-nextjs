@@ -2,15 +2,16 @@
 export { default as BlogPage } from "./BlogPage";
 export { default as BlogPostPage } from "./BlogPostPage";
 
-// Feature components
-export { default as BlogHero } from "./components/BlogHero";
-export { default as FeaturedPosts } from "./components/FeaturedPosts";
-export { default as PostsGrid } from "./components/PostsGrid";
-export { default as BlogSearchAndFilter } from "./components/BlogSearchAndFilter";
-
-// Card components
-export { default as PostCard } from "./components/PostCard";
-export { default as FeaturedPostCard } from "./components/FeaturedPostCard";
+// Component exports (re-exported from components/index.ts)
+export {
+  BlogHero,
+  FeaturedPosts,
+  PostsGrid,
+  PostCard,
+  FeaturedPostCard,
+  BlogSearchAndFilter,
+  ShareButton,
+} from "./components";
 
 // Types
 export type {
@@ -33,3 +34,19 @@ export {
   formatDate,
   calculateReadingTime,
 } from "./utils";
+
+// Services
+export {
+  getAllPosts,
+  getPostBySlug,
+  getAllPostSlugs,
+  getFeaturedPosts as getFeaturedPostsService,
+  getAllCategories,
+  transformSanityPost,
+} from "./services";
+
+// Hooks
+export { useBlogSearch, useBlogFilters } from "./hooks";
+
+// Constants
+export { BLOG_CONFIG, BLOG_ROUTES, BLOG_ANIMATIONS } from "./constants";

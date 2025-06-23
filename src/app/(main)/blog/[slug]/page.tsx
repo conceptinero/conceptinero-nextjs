@@ -1,10 +1,10 @@
+import { notFound } from "next/navigation";
+import { BlogPostPage } from "@/features/blog";
 import {
   getPostBySlug,
   getAllPostSlugs,
   transformSanityPost,
-} from "@/sanity/lib/blogService";
-import { notFound } from "next/navigation";
-import BlogPostPage from "@/features/blog/BlogPostPage";
+} from "@/features/blog/services";
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -39,4 +39,4 @@ export async function generateStaticParams() {
   }));
 }
 
-export const revalidate = 3600; // Revalidate every hour
+export const revalidate = 3600;

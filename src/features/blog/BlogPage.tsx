@@ -1,8 +1,6 @@
 import { BlogPageData } from "./types";
 import { getFeaturedPosts, getRegularPosts, extractCategories } from "./utils";
-import BlogHero from "./components/BlogHero";
-import FeaturedPosts from "./components/FeaturedPosts";
-import BlogSearchAndFilter from "./components/BlogSearchAndFilter";
+import { BlogHero, FeaturedPosts, BlogSearchAndFilter } from "./components";
 
 interface BlogPageProps {
   data: BlogPageData;
@@ -11,11 +9,9 @@ interface BlogPageProps {
 export default function BlogPage({ data }: BlogPageProps) {
   const { posts } = data;
 
-  // Split posts into featured and regular
+  // Use utility functions directly since this is a server component
   const featuredPosts = getFeaturedPosts(posts);
   const regularPosts = getRegularPosts(posts);
-
-  // Extract categories for filtering
   const categories = extractCategories(posts);
 
   return (
