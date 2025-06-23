@@ -14,6 +14,9 @@ export const BLOG_CONFIG = {
   // Cache/revalidation
   REVALIDATE_INTERVAL: 3600, // 1 hour
 
+  // Site configuration
+  SITE_URL: process.env.NEXT_PUBLIC_SITE_URL || "https://conceptinero.com",
+
   // Meta tags
   DEFAULT_META: {
     title: "SR&ED Insights & Resources - Conceptinero",
@@ -30,6 +33,12 @@ export const BLOG_ROUTES = {
   CATEGORY: (category: string) =>
     `/blog?category=${encodeURIComponent(category)}`,
   SEARCH: (query: string) => `/blog?search=${encodeURIComponent(query)}`,
+
+  // Absolute URL generators for sitemap
+  ABSOLUTE: {
+    INDEX: (baseUrl: string) => `${baseUrl}/blog`,
+    POST: (baseUrl: string, slug: string) => `${baseUrl}/blog/${slug}`,
+  },
 } as const;
 
 // Animation configurations
