@@ -1,4 +1,4 @@
-import { Hero, MissionAndValues, Team, CallToAction } from "@/components/about";
+import { Hero, MissionAndValues, Team, CallToAction } from "@/features/about";
 
 export default function AboutPage() {
   return (

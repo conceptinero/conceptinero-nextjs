@@ -1,10 +1,10 @@
 import NavLinks from "./NavLinks";
-import Logo from "../Logo";
 import ConsultationButton from "@/components/shared/ConsultationButton";
 import MobileMenuButton from "./MobileMenuButton";
 import MobileNavigation from "./MobileNavigation";
 import MobileNavigationController from "./MobileNavigationController";
 import { ModeSwitcher } from "./ModeSwitcher";
+import Logo from "../Logo";
 
 export function Navbar() {
   return (

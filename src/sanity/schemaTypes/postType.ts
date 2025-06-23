@@ -33,14 +33,14 @@ export const postType = defineType({
       validation: (Rule) => Rule.required().error("Description is required"),
     }),
     defineField({
-      name: "timeToRead",
-      title: "Time To Read",
+      name: "readTime",
+      title: "Read Time",
       type: "number",
       description: "Estimated reading time in minutes",
       validation: (Rule) =>
         Rule.required()
           .min(1)
-          .error("Time to read is required and must be at least 1 minute"),
+          .error("read time is required and must be at least 1 minute"),
     }),
     defineField({
       name: "author",

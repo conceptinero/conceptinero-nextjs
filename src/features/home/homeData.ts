@@ -1,4 +1,4 @@
-import { industries } from "@/components/data";
+import { industries } from "@/features/data";
 
 // Shared data used across multiple home sections
 export const stats: Status[] = [

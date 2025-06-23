@@ -1,5 +1,5 @@
 import React from "react";
-import AnimatedSection from "../shared/AnimatedSection";
+import AnimatedSection from "@/components/shared/AnimatedSection";
 import Image from "next/image";
 
 const teamMembers = [

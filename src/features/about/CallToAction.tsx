@@ -1,5 +1,5 @@
 import React from "react";
-import ConsultationButton from "../shared/ConsultationButton";
+import ConsultationButton from "@/components/shared/ConsultationButton";
 
 function CallToAction() {
   return (

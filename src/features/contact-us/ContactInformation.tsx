@@ -1,6 +1,6 @@
 import React from "react";
-import ConsultationButton from "../shared/ConsultationButton";
-import { Contact, contacts } from "../data";
+import ConsultationButton from "@/components/shared/ConsultationButton";
+import { Contact, contacts } from "@/features/data";
 
 function ContactInformation() {
   return (

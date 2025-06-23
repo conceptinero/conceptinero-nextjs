@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import type { HTMLMotionProps } from "framer-motion";
 
 type Props = Omit<HTMLMotionProps<"div">, "ref"> & {
-  children: React.ReactNode;
+  children?: React.ReactNode;
 };
 
 export default function AnimatedSection({ children, ...props }: Props) {

@@ -1,4 +1,4 @@
-import { Contact, contacts } from "@/components/data";
+import { Contact, contacts } from "@/features/data";
 
 function ContactItem({ icon: Icon, href, content }: Contact) {
   return (

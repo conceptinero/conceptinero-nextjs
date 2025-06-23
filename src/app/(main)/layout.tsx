@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { Navbar } from "@/components/layout/Navbar";
-import { Footer } from "@/components/layout/Footer";
+import { Navbar } from "@/features/layout/Navbar";
+import { Footer } from "@/features/layout/Footer";
 import { ThemeProvider } from "next-themes";
 import { Toaster } from "@/components/ui/sonner";
 // import JotaiProvider from "@/components/providers/JotaiProvider";
-import { BookConsultation } from "@/components/layout/BookConsultation";
+import { BookConsultation } from "@/features/layout/BookConsultation";
 import { Provider as JotaiProvider } from "jotai";
 
 const inter = Inter({ subsets: ["latin"] });

@@ -6,7 +6,7 @@ import {
   ProcessSection,
   TestimonialsSection,
   WhyChooseSection,
-} from "@/components/home";
+} from "@/features/home";
 
 export default function Home() {
   return (

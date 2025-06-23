@@ -1,6 +1,6 @@
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import React from "react";
-import AnimatedSection from "../shared/AnimatedSection";
+import AnimatedSection from "@/components/shared/AnimatedSection";
 
 function MissionAndValues() {
   return (

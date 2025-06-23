@@ -9,7 +9,7 @@ function CompanyInfo() {
       </div>
       <p className="text-sm text-gray-600 dark:text-gray-400">
         Full-service SR&ED tax credit consulting firm with a 94.25% success rate
-        and over $75M in tax credits filed.
+        and over $100M in tax credits filed.
       </p>
       <div className="flex space-x-4">
         <SocialIcons />
