@@ -16,6 +16,7 @@ export async function POST(req: NextRequest) {
   try {
     if (slug) {
       revalidatePath(`/blog/${slug}`);
+      revalidatePath(`/blog`);
     } else {
       revalidatePath("/");
     }
