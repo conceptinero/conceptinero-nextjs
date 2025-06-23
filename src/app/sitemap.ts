@@ -1,6 +1,5 @@
 import { MetadataRoute } from "next";
-import { getAllPosts } from "@/features/blog/services";
-import { transformSanityPost } from "@/features/blog/services";
+import { getPostsForSitemap } from "@/features/blog/services";
 import { BLOG_CONFIG, BLOG_ROUTES } from "@/features/blog/constants";
 
 // Enable ISR for the sitemap - revalidate every hour
@@ -43,20 +42,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ];
 
-  // Dynamic blog routes
+  // Dynamic blog routes using cached data
   try {
-    const posts = await getAllPosts();
-    const blogRoutes: MetadataRoute.Sitemap = posts
-      .filter((post) => post && post.slug?.current && post.title)
-      .map((post) => {
-        const transformedPost = transformSanityPost(post);
-        return {
-          url: BLOG_ROUTES.ABSOLUTE.POST(baseUrl, transformedPost.slug),
-          lastModified: new Date(transformedPost.publishedAt),
-          changeFrequency: "weekly" as const,
-          priority: 0.8,
-        };
-      });
+    const posts = await getPostsForSitemap(); // Uses same cache as blog pages
+    const blogRoutes: MetadataRoute.Sitemap = posts.map((post) => ({
+      url: BLOG_ROUTES.ABSOLUTE.POST(baseUrl, post.slug),
+      lastModified: new Date(post.publishedAt),
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
+    }));
 
     return [...staticRoutes, ...blogRoutes];
   } catch (error) {

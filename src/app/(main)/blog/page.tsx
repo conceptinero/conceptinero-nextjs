@@ -1,9 +1,5 @@
 import { BlogPage } from "@/features/blog";
-import {
-  getAllPosts,
-  getAllCategories,
-  transformSanityPost,
-} from "@/features/blog/services";
+import { getCachedPosts, getAllCategories } from "@/features/blog/services";
 import { sortPostsByDate } from "@/features/blog/utils";
 
 // Transform categories for the filter
@@ -15,19 +11,14 @@ function transformCategories(
 
 export default async function BlogPageRoute() {
   try {
-    // Fetch all data in parallel
-    const [postsData, categoriesData] = await Promise.all([
-      getAllPosts(),
+    // Fetch all data in parallel - posts use cached version
+    const [posts, categoriesData] = await Promise.all([
+      getCachedPosts(), // Uses cached data shared with sitemap
       getAllCategories(),
     ]);
 
-    // Transform and filter valid posts
-    const validPosts = postsData
-      .filter((post) => post && post.slug?.current && post.title)
-      .map(transformSanityPost);
-
-    // Sort posts by date
-    const sortedPosts = sortPostsByDate(validPosts);
+    // Sort posts by date (posts are already transformed and filtered in cache)
+    const sortedPosts = sortPostsByDate(posts);
 
     // Transform categories
     const categories = transformCategories(categoriesData);

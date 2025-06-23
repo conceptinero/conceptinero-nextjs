@@ -1,6 +1,6 @@
 // /app/api/revalidate/route.ts
 
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
@@ -14,6 +14,9 @@ export async function POST(req: NextRequest) {
   const slug = body?.slug?.current;
 
   try {
+    // Revalidate cached blog posts data (shared between blog pages and sitemap)
+    revalidateTag("blog-posts");
+
     if (slug) {
       // Revalidate specific blog post and blog index
       revalidatePath(`/blog/${slug}`);
@@ -29,6 +32,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({
       revalidated: true,
+      cacheTagsCleared: ["blog-posts"],
       paths: slug
         ? [`/blog/${slug}`, `/blog`, `/sitemap.xml`, `/robots.txt`]
         : [`/`, `/sitemap.xml`, `/robots.txt`],
