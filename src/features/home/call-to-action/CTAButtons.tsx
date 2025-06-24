@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import ConsultationButton from "@/components/shared/ConsultationButton";
+import ConsultationButton from "@/features/calendly/ConsultationButton";
 
 export function CTAButtons() {
   return (

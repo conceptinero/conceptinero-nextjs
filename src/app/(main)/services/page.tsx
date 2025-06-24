@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 
 import AnimatedSection from "@/components/shared/AnimatedSection";
-import ConsultationButton from "@/components/shared/ConsultationButton";
+import ConsultationButton from "@/features/calendly/ConsultationButton";
 
 const industryIcons = {
   software: PieChart,
@@ -297,7 +297,7 @@ export default function ServicesPage() {
           </div>
 
           <div className="text-center mt-12">
-            <ConsultationButton />
+            <ConsultationButton style="white" />
           </div>
         </div>
       </section>
@@ -457,7 +457,7 @@ export default function ServicesPage() {
                 </p>
               </div>
               <div className="flex-shrink-0">
-                <ConsultationButton className="bg-white text-blue-600 hover:bg-blue-50" />
+                <ConsultationButton style="white" />
               </div>
             </div>
           </div>

@@ -1,5 +1,5 @@
 import NavLinks from "./NavLinks";
-import ConsultationButton from "@/components/shared/ConsultationButton";
+import ConsultationButton from "@/features/calendly/ConsultationButton";
 import MobileMenuButton from "./MobileMenuButton";
 import MobileNavigation from "./MobileNavigation";
 import MobileNavigationController from "./MobileNavigationController";

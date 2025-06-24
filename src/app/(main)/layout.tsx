@@ -8,6 +8,7 @@ import { Toaster } from "@/components/ui/sonner";
 // import JotaiProvider from "@/components/providers/JotaiProvider";
 import { BookConsultation } from "@/features/layout/BookConsultation";
 import { Provider as JotaiProvider } from "jotai";
+import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -41,6 +42,11 @@ export default function RootLayout({
             <Toaster position="bottom-right" />
           </JotaiProvider>
         </ThemeProvider>
+        <Script
+          type="text/javascript"
+          src="https://assets.calendly.com/assets/external/widget.js"
+          async
+        />
       </body>
     </html>
   );

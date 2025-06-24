@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import ConsultationButton from "@/components/shared/ConsultationButton";
+import ConsultationButton from "@/features/calendly/ConsultationButton";
 import AnimatedSection from "@/components/shared/AnimatedSection";
 import TickIcon from "@/icons/TickIcon";
 import HiglightText from "@/components/ui/HiglightText";

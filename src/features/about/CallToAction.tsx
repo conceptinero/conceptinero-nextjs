@@ -1,5 +1,5 @@
 import React from "react";
-import ConsultationButton from "@/components/shared/ConsultationButton";
+import ConsultationButton from "@/features/calendly/ConsultationButton";
 
 function CallToAction() {
   return (
@@ -13,7 +13,7 @@ function CallToAction() {
             Book your free strategy session today to discover how we can help
             maximize your SR&ED tax credits.
           </p>
-          <ConsultationButton size="lg" />
+          <ConsultationButton size="lg" style="white" />
         </div>
       </div>
     </section>

@@ -1,5 +1,5 @@
 import React from "react";
-import ConsultationButton from "@/components/shared/ConsultationButton";
+import ConsultationButton from "@/features/calendly/ConsultationButton";
 import { Contact, contacts } from "@/features/data";
 
 function ContactInformation() {

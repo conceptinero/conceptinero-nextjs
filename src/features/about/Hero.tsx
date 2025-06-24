@@ -1,6 +1,6 @@
 import React from "react";
 import AnimatedSection from "@/components/shared/AnimatedSection";
-import ConsultationButton from "@/components/shared/ConsultationButton";
+import ConsultationButton from "@/features/calendly/ConsultationButton";
 import Image from "next/image";
 
 function Hero() {

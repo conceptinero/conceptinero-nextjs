@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, Calendar, Clock, User, BookOpen } from "lucide-react";
-import ConsultationButton from "@/components/shared/ConsultationButton";
+import ConsultationButton from "@/features/calendly/ConsultationButton";
 import AnimatedSection from "@/components/shared/AnimatedSection";
 import AnimatedHeader from "@/components/shared/AnimatedHeader";
 import { PortableText } from "@portabletext/react";
