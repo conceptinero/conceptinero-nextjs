@@ -1,4 +1,3 @@
-import React from "react";
 import AnimatedSection from "@/components/shared/AnimatedSection";
 import ConsultationButton from "@/features/calendly/ConsultationButton";
 import Image from "next/image";

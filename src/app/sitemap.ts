@@ -2,8 +2,8 @@ import { MetadataRoute } from "next";
 import { getPostsForSitemap } from "@/features/blog/services";
 import { BLOG_CONFIG, BLOG_ROUTES } from "@/features/blog/constants";
 
-// Enable ISR for the sitemap - revalidate every hour
-export const revalidate = 3600;
+// Enable ISR for the sitemap - revalidate every day
+export const revalidate = 86400;
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = BLOG_CONFIG.SITE_URL;

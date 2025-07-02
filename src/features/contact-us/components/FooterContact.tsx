@@ -1,4 +1,4 @@
-import { Contact, contacts } from "@/features/data";
+import { Contact, contacts } from "../contactUsData";
 
 function ContactItem({ icon: Icon, href, content }: Contact) {
   return (
@@ -13,7 +13,7 @@ function ContactItem({ icon: Icon, href, content }: Contact) {
   );
 }
 
-function ContactInfo() {
+function FooterContact() {
   return (
     <div>
       <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-900 dark:text-gray-100 mb-4">
@@ -33,4 +33,4 @@ function ContactInfo() {
   );
 }
 
-export default ContactInfo;
+export default FooterContact;

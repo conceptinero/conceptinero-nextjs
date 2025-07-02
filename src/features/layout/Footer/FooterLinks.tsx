@@ -1,4 +1,3 @@
-import React from "react";
 import { navigationLinks } from "../layoutData";
 import Link from "next/link";
 

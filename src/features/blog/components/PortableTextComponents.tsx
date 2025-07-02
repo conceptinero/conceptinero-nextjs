@@ -1,5 +1,8 @@
 import { PortableTextComponents } from "@portabletext/react";
 import { ReactNode } from "react";
+import { urlFor } from "@/sanity/lib/image";
+import { SanityImageHotspot, SanityImageCrop } from "@/sanity/types";
+import Image from "next/image";
 
 // Custom PortableText components for beautiful rendering
 export const portableTextComponents: PortableTextComponents = {
@@ -120,5 +123,40 @@ export const portableTextComponents: PortableTextComponents = {
         </pre>
       </div>
     ),
+    image: ({
+      value,
+    }: {
+      value: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+        };
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        alt?: string;
+        caption?: string;
+        _type: "image";
+      };
+    }) => {
+      if (!value.asset) return null;
+
+      return (
+        <figure className="my-8">
+          <Image
+            src={urlFor(value.asset).url()}
+            alt={value.alt || "Blog image"}
+            className="w-full h-auto rounded-xl shadow-lg"
+            width={1000}
+            height={1000}
+          />
+          {value.caption && (
+            <figcaption className="text-center text-sm text-gray-600 dark:text-gray-400 mt-3 italic">
+              {value.caption}
+            </figcaption>
+          )}
+        </figure>
+      );
+    },
   },
 };

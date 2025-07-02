@@ -1,6 +1,5 @@
 import AnimatedSection from "@/components/shared/AnimatedSection";
 import HiglightText from "@/components/ui/HiglightText";
-import React from "react";
 
 function FrustrationHeading() {
   return (
