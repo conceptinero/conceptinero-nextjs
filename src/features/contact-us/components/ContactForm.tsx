@@ -6,6 +6,9 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { toast } from "sonner";
 import { Send } from "lucide-react";
+import PhoneInput from "react-phone-number-input";
+import { isValidPhoneNumber } from "react-phone-number-input";
+import "react-phone-number-input/style.css";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -17,20 +20,19 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { submitContactFormJSON } from "@/features/contact-us/actions";
 
 const formSchema = z.object({
   name: z.string().min(2, "Name is required"),
   email: z.string().email("Invalid email address"),
-  phone: z.string().optional(),
+  phone: z
+    .string()
+    .optional()
+    .refine(
+      (value) => !value || isValidPhoneNumber(value),
+      "Please enter a valid phone number"
+    ),
   company: z.string().min(2, "Company name is required"),
-  industry: z.string().min(1, "Please select an industry"),
   message: z.string().min(10, "Message must be at least 10 characters"),
 });
 
@@ -41,22 +43,53 @@ function ContactForm() {
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      phone: undefined,
+      company: "",
+      message: "",
+    },
   });
 
-  const onSubmit =
-    // async (data: FormValues) => {
-    async () => {
-      setLoading(true);
+  const onSubmit = async (data: FormValues) => {
+    setLoading(true);
 
-      // Simulate form submission
-      setTimeout(() => {
-        setLoading(false);
-        toast.success(
-          "Thank you for your message! We will get back to you shortly."
-        );
-        form.reset();
-      }, 1500);
-    };
+    try {
+      const result = await submitContactFormJSON(data);
+
+      if (result.success) {
+        toast.success(result.message);
+        // Custom reset to preserve country code
+        form.reset({
+          name: "",
+          email: "",
+          phone: undefined, // This will preserve the CA country code
+          company: "",
+          message: "",
+        });
+      } else {
+        toast.error(result.message);
+
+        // Handle field-specific errors
+        if (result.errors) {
+          Object.entries(result.errors).forEach(([field, messages]) => {
+            if (field in form.getValues()) {
+              form.setError(field as keyof FormValues, {
+                type: "server",
+                message: messages[0],
+              });
+            }
+          });
+        }
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      toast.error("Something went wrong. Please try again later.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-sm border border-gray-100 dark:border-gray-700">
@@ -104,7 +137,56 @@ function ContactForm() {
                 <FormItem>
                   <FormLabel>Phone Number</FormLabel>
                   <FormControl>
-                    <Input placeholder="(123) 456-7890" {...field} />
+                    <div className="phone-input-wrapper">
+                      <PhoneInput
+                        placeholder="Enter phone number"
+                        value={field.value}
+                        onChange={field.onChange}
+                        defaultCountry="CA"
+                        className="phone-input"
+                      />
+                      <style jsx>{`
+                        .phone-input-wrapper :global(.PhoneInput) {
+                          display: flex;
+                          align-items: center;
+                          height: 2.5rem;
+                          width: 100%;
+                          border-radius: 0.375rem;
+                          border: 1px solid hsl(var(--border));
+                          background-color: hsl(var(--background));
+                          padding: 0.5rem 0.75rem;
+                          font-size: 0.875rem;
+                          transition: all 0.2s;
+                        }
+                        .phone-input-wrapper :global(.PhoneInput:focus-within) {
+                          outline: 2px solid transparent;
+                          outline-offset: 2px;
+                          box-shadow: 0 0 0 2px hsl(var(--ring));
+                        }
+                        .phone-input-wrapper :global(.PhoneInputCountrySelect) {
+                          background: transparent;
+                          border: none;
+                          margin-right: 0.5rem;
+                          font-size: 0.875rem;
+                        }
+                        .phone-input-wrapper :global(.PhoneInputInput) {
+                          background: transparent;
+                          border: none;
+                          outline: none;
+                          flex: 1;
+                          font-size: 0.875rem;
+                          color: hsl(var(--foreground));
+                        }
+                        .phone-input-wrapper
+                          :global(.PhoneInputInput::placeholder) {
+                          color: hsl(var(--muted-foreground));
+                        }
+                        .phone-input-wrapper
+                          :global(.PhoneInputCountrySelectArrow) {
+                          color: hsl(var(--muted-foreground));
+                        }
+                      `}</style>
+                    </div>
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -125,37 +207,6 @@ function ContactForm() {
               )}
             />
           </div>
-
-          <FormField
-            control={form.control}
-            name="industry"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Industry*</FormLabel>
-                <Select
-                  onValueChange={field.onChange}
-                  defaultValue={field.value}
-                >
-                  <FormControl>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select your industry" />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent>
-                    <SelectItem value="software">Software & IT</SelectItem>
-                    <SelectItem value="healthcare">
-                      Healthcare & Medical Sciences
-                    </SelectItem>
-                    <SelectItem value="manufacturing">Manufacturing</SelectItem>
-                    <SelectItem value="engineering">Engineering</SelectItem>
-                    <SelectItem value="food">Food & Life Sciences</SelectItem>
-                    <SelectItem value="other">Other</SelectItem>
-                  </SelectContent>
-                </Select>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
 
           <FormField
             control={form.control}

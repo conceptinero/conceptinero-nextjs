@@ -1,4 +1,4 @@
-import { faqData } from "./contactUsData";
+import { faqData } from "../contactUsData";
 
 function FAQSection() {
   return (

@@ -1,5 +1,8 @@
 import AnimatedSection from "@/components/shared/AnimatedSection";
-import { ContactForm, ContactInformation } from "@/features/contact-us";
+import {
+  ContactForm,
+  ContactInformation,
+} from "@/features/contact-us/components";
 
 export default function ContactPage() {
   return (

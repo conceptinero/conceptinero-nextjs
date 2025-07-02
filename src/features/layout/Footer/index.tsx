@@ -3,7 +3,7 @@ import CompanyInfo from "./CompanyInfo";
 import Rights from "./Rights";
 import FooterLinks from "./FooterLinks";
 import { FooterIndustries } from "@/features/Industries";
-import FooterContact from "@/features/contact-us/FooterContact";
+import FooterContact from "@/features/contact-us/components/FooterContact";
 
 export function Footer() {
   return (

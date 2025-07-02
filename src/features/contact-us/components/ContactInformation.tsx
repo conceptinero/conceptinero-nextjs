@@ -1,5 +1,5 @@
 import ConsultationButton from "@/features/calendly/ConsultationButton";
-import { Contact, contacts } from "./contactUsData";
+import { Contact, contacts } from "../contactUsData";
 
 function ContactInformation() {
   return (
