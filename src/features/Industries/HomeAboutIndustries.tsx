@@ -1,4 +1,4 @@
-import { industriesWithColors } from "../homeData";
+import { industriesWithColors } from "./data";
 import { Badge } from "@/components/ui/badge";
 
 export const colorClassMap: Record<string, string> = {
@@ -22,7 +22,7 @@ function IndustryBadge({
   return <Badge className={colorClassMap[color]}>{children}</Badge>;
 }
 
-function AboutIndustries() {
+function HomeAboutIndustries() {
   return (
     <div className="flex flex-wrap gap-3">
       {industriesWithColors.map((item, i) => (
@@ -34,4 +34,4 @@ function AboutIndustries() {
   );
 }
 
-export default AboutIndustries;
+export default HomeAboutIndustries;

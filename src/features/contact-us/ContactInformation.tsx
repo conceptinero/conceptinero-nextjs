@@ -1,6 +1,5 @@
-import React from "react";
 import ConsultationButton from "@/features/calendly/ConsultationButton";
-import { Contact, contacts } from "@/features/data";
+import { Contact, contacts } from "./contactUsData";
 
 function ContactInformation() {
   return (

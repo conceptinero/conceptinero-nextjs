@@ -1,9 +1,9 @@
 import { Separator } from "@/components/ui/separator";
-import Industries from "./Industries";
-import ContactInfo from "./ContactInfo";
 import CompanyInfo from "./CompanyInfo";
 import Rights from "./Rights";
 import FooterLinks from "./FooterLinks";
+import { FooterIndustries } from "@/features/Industries";
+import FooterContact from "@/features/contact-us/FooterContact";
 
 export function Footer() {
   return (
@@ -19,8 +19,8 @@ export function Footer() {
               <FooterLinks />
             </ul>
           </div>
-          <Industries />
-          <ContactInfo />
+          <FooterIndustries />
+          <FooterContact />
         </div>
         <Separator className="my-8" />
         <Rights />

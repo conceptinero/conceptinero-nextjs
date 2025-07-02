@@ -1,5 +1,5 @@
 import AboutCards from "./AboutCards";
-import AboutIndustries from "./AboutIndustries";
+import { HomeAboutIndustries } from "@/features/Industries";
 import AnimatedSection from "@/components/shared/AnimatedSection";
 
 function ContentColumn() {
@@ -30,7 +30,7 @@ function ContentColumn() {
         stress of the SR&ED process.
       </p>
 
-      <AboutIndustries />
+      <HomeAboutIndustries />
     </AnimatedSection>
   );
 }

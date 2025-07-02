@@ -1,3 +1,5 @@
+import { Mail, Phone, LucideIcon } from "lucide-react";
+
 export const faqData: FAQ[] = [
   {
     question: "How does the free consultation work?",
@@ -24,4 +26,26 @@ export const faqData: FAQ[] = [
 type FAQ = {
   question: string;
   answer: string;
+};
+
+export const contacts: Contact[] = [
+  {
+    icon: Mail,
+    href: "mailto:kevin@conceptinero.com",
+    content: "kevin@conceptinero.com",
+    title: "Email Us",
+  },
+  {
+    icon: Phone,
+    href: "tel:+16472999241",
+    content: "+1 (647) 299 9241",
+    title: "Call Us",
+  },
+];
+
+export type Contact = {
+  icon: LucideIcon;
+  href: string;
+  content: string;
+  title?: string;
 };

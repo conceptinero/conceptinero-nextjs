@@ -1,4 +1,3 @@
-import React from "react";
 import ConsultationButton from "@/features/calendly/ConsultationButton";
 
 function CallToAction() {
