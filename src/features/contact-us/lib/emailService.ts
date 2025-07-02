@@ -182,7 +182,7 @@ export const sendAdminNotificationEmail = async (data: ContactFormData) => {
 
   const mailOptions = {
     from: `"Conceptinero Website" <${process.env.SMTP_USER}>`,
-    to: "abdullahahmed2004@gmail.com",
+    to: "kevin@conceptinero.com",
     subject: `New Web Inquiry from ${data.name} - ${data.company}`,
     html: getAdminNotificationEmailHtml(data),
     headers: {
