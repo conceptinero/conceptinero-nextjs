@@ -1,19 +1,25 @@
 import { client } from "./client";
+import { urlFor } from "./image";
 import {
   postsQuery,
   postBySlugQuery,
   postSlugsQuery,
   featuredPostsQuery,
   categoriesQuery,
+  authorsQuery,
 } from "./queries";
 import type {
   PostsQueryResult,
   PostBySlugQueryResult,
   CategoriesQueryResult,
+  AuthorsQueryResult,
 } from "../types";
 
 // Type for a single post from the query result
 type SanityPost = NonNullable<PostBySlugQueryResult>;
+
+// Type for a single author from the query result
+type SanityAuthor = AuthorsQueryResult[0];
 
 // Transform Sanity post to match our component structure
 export function transformSanityPost(post: SanityPost) {
@@ -38,6 +44,41 @@ export function transformSanityPost(post: SanityPost) {
     },
     featured: post.featured || false,
     body: post.body || [],
+  };
+}
+
+// Helper function to convert Sanity block content to plain text
+function blocksToText(blocks: SanityAuthor["bio"]): string {
+  if (!blocks) return "";
+
+  return blocks
+    .filter((block) => block._type === "block")
+    .map(
+      (block) =>
+        block.children
+          ?.filter((child) => child._type === "span")
+          .map((span) => span.text)
+          .join("") || ""
+    )
+    .join(" ")
+    .trim();
+}
+
+// Transform Sanity author to match our component structure
+export function transformSanityAuthor(author: SanityAuthor) {
+  if (!author) {
+    throw new Error("Author is null or undefined");
+  }
+
+  return {
+    id: author._id,
+    name: author.name || "",
+    role: author.role || "",
+    bio: blocksToText(author.bio),
+    image: author.image?.asset
+      ? urlFor(author.image).width(400).height(400).url()
+      : "",
+    slug: author.slug?.current || "",
   };
 }
 
@@ -89,5 +130,37 @@ export async function getAllCategories(): Promise<CategoriesQueryResult> {
   } catch (error) {
     console.error("Error fetching categories:", error);
     return [];
+  }
+}
+
+// Fetch all authors
+export async function getAllAuthors(): Promise<AuthorsQueryResult> {
+  try {
+    return await client.fetch(authorsQuery);
+  } catch (error) {
+    console.error("Error fetching authors:", error);
+    return [];
+  }
+}
+
+// Cached version of getAllAuthors for better performance
+let authorsCache: AuthorsQueryResult | null = null;
+let authorsCacheTime = 0;
+const AUTHORS_CACHE_DURATION = 3600000; // 1 hour in milliseconds
+
+export async function getCachedAuthors(): Promise<AuthorsQueryResult> {
+  const now = Date.now();
+
+  if (authorsCache && now - authorsCacheTime < AUTHORS_CACHE_DURATION) {
+    return authorsCache;
+  }
+
+  try {
+    authorsCache = await getAllAuthors();
+    authorsCacheTime = now;
+    return authorsCache;
+  } catch (error) {
+    console.error("Error fetching cached authors:", error);
+    return authorsCache || []; // Return cached data if available, empty array otherwise
   }
 }

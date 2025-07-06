@@ -496,6 +496,39 @@ export type CategoriesQueryResult = Array<{
   title: string | null;
   slug: Slug | null;
 }>;
+// Variable: authorsQuery
+// Query: *[_type == "author"] | order(name asc) {    _id,    name,    role,    slug,    image{      asset->{        _id,        url      },      alt    },    bio  }
+export type AuthorsQueryResult = Array<{
+  _id: string;
+  name: string | null;
+  role: null;
+  slug: Slug | null;
+  image: {
+    asset: {
+      _id: string;
+      url: string | null;
+    } | null;
+    alt: null;
+  } | null;
+  bio: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal";
+    listItem?: never;
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }> | null;
+}>;
 
 // Query TypeMap
 import "@sanity/client";
@@ -506,5 +539,6 @@ declare module "@sanity/client" {
     "\n  *[_type == \"post\" && defined(slug.current)][].slug.current\n": PostSlugsQueryResult;
     "\n  *[_type == \"post\" && featured == true] | order(publishedAt desc) {\n    _id,\n    title,\n    slug,\n    description,\n    featured,\n    readTime,\n    publishedAt,\n    mainImage{\n      asset->{\n        _id,\n        url\n      },\n      alt\n    },\n    author->{\n      _id,\n      name,\n      slug,\n      image{\n        asset->{\n          _id,\n          url\n        },\n        alt\n      }\n    },\n    categories[]->{\n      _id,\n      title,\n      slug\n    },\n    body\n  }\n": FeaturedPostsQueryResult;
     "\n  *[_type == \"category\"] | order(title asc) {\n    _id,\n    title,\n    slug\n  }\n": CategoriesQueryResult;
+    "\n  *[_type == \"author\"] | order(name asc) {\n    _id,\n    name,\n    role,\n    slug,\n    image{\n      asset->{\n        _id,\n        url\n      },\n      alt\n    },\n    bio\n  }\n": AuthorsQueryResult;
   }
 }

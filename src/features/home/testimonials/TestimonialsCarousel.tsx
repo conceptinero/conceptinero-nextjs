@@ -4,15 +4,10 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { TestimonialCard } from "./TestimonialCard";
+import { Testimonial } from "./testimonialsData";
 
 interface TestimonialsCarouselProps {
-  testimonials: Array<{
-    quote: string;
-    author: string;
-    position: string;
-    company: string;
-    image: string;
-  }>;
+  testimonials: Testimonial[];
 }
 
 export function TestimonialsCarousel({
