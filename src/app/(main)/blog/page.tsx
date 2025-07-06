@@ -1,6 +1,49 @@
 import { BlogPage } from "@/features/blog";
 import { getCachedPosts, getAllCategories } from "@/features/blog/services";
 import { sortPostsByDate } from "@/features/blog/utils";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "SR&ED Insights & Resources Blog | Tax Credit Tips | Conceptinero",
+  description:
+    "Stay informed with the latest SR&ED news, strategies, tips, and insights about R&D tax credits in Canada. Expert advice from Conceptinero's SR&ED specialists.",
+  keywords: [
+    "SR&ED blog",
+    "R&D tax credit tips",
+    "SR&ED insights",
+    "tax credit strategies",
+    "SR&ED news Canada",
+    "R&D funding insights",
+    "SR&ED program updates",
+    "tax credit resources",
+    "SR&ED best practices",
+    "R&D tax credit blog",
+  ],
+  openGraph: {
+    title: "SR&ED Insights & Resources Blog | Conceptinero",
+    description:
+      "Stay informed with the latest SR&ED news, strategies, and insights about R&D tax credits in Canada.",
+    type: "website",
+    images: [
+      {
+        url: "/blog/blog-1.webp",
+        width: 1200,
+        height: 630,
+        alt: "SR&ED Insights and Resources Blog by Conceptinero",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "SR&ED Insights & Resources Blog | Conceptinero",
+    description:
+      "Stay informed with the latest SR&ED news, strategies, and insights about R&D tax credits.",
+    images: ["/blog/blog-1.webp"],
+  },
+  alternates: {
+    canonical: "/blog",
+  },
+};
 
 // Transform categories for the filter
 function transformCategories(
