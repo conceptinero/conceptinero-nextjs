@@ -3,6 +3,49 @@ import {
   ContactForm,
   ContactInformation,
 } from "@/features/contact-us/components";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Contact Conceptinero | Get Your Free SR&ED Consultation Today",
+  description:
+    "Contact our SR&ED experts for a free consultation. Located in Ontario, Canada. Call +1-647-299-9241 or email info@conceptinero.com. Get expert help with your R&D tax credits.",
+  keywords: [
+    "contact SR&ED consultants",
+    "free SR&ED consultation",
+    "SR&ED experts Ontario",
+    "R&D tax credit consultation",
+    "SR&ED help Canada",
+    "contact tax credit specialists",
+    "SR&ED consultation Ontario",
+    "R&D funding consultation",
+    "tax credit expert contact",
+    "SR&ED claim help",
+  ],
+  openGraph: {
+    title: "Contact Conceptinero | Free SR&ED Consultation",
+    description:
+      "Contact our SR&ED experts for a free consultation. Located in Ontario, Canada. Get expert help with your R&D tax credits.",
+    type: "website",
+    images: [
+      {
+        url: "/hero.webp",
+        width: 1200,
+        height: 630,
+        alt: "Contact Conceptinero for SR&ED Consultation",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact Conceptinero | Free SR&ED Consultation",
+    description:
+      "Contact our SR&ED experts for a free consultation. Located in Ontario, Canada.",
+    images: ["/hero.webp"],
+  },
+  alternates: {
+    canonical: "/contact",
+  },
+};
 
 export default function ContactPage() {
   return (
