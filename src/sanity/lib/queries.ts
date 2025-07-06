@@ -127,3 +127,21 @@ export const categoriesQuery = groq`
     slug
   }
 `;
+
+// Query for all authors
+export const authorsQuery = groq`
+  *[_type == "author"] | order(name asc) {
+    _id,
+    name,
+    role,
+    slug,
+    image{
+      asset->{
+        _id,
+        url
+      },
+      alt
+    },
+    bio
+  }
+`;
