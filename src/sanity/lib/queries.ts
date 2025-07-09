@@ -142,6 +142,7 @@ export const authorsQuery = groq`
       },
       alt
     },
-    bio
+    bio,
+    linkedin
   }
 `;
