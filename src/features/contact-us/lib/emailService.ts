@@ -164,6 +164,7 @@ export const sendUserConfirmationEmail = async (data: ContactFormData) => {
   const mailOptions = {
     from: `"Conceptinero" <${process.env.SMTP_USER}>`,
     to: data.email,
+    cc: "kevin@conceptinero.com",
     subject: "Thank you for contacting Conceptinero - We'll be in touch soon!",
     html: getUserConfirmationEmailHtml(data),
     headers: {
@@ -201,7 +202,7 @@ export const sendContactFormEmails = async (data: ContactFormData) => {
     // Send both emails in parallel
     await Promise.all([
       sendUserConfirmationEmail(data),
-      sendAdminNotificationEmail(data),
+      // sendAdminNotificationEmail(data),
     ]);
 
     return { success: true };
