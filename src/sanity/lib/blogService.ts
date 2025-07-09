@@ -79,6 +79,7 @@ export function transformSanityAuthor(author: SanityAuthor) {
       ? urlFor(author.image).width(400).height(400).url()
       : "",
     slug: author.slug?.current || "",
+    linkedin: author.linkedin || "",
   };
 }
 
@@ -140,27 +141,5 @@ export async function getAllAuthors(): Promise<AuthorsQueryResult> {
   } catch (error) {
     console.error("Error fetching authors:", error);
     return [];
-  }
-}
-
-// Cached version of getAllAuthors for better performance
-let authorsCache: AuthorsQueryResult | null = null;
-let authorsCacheTime = 0;
-const AUTHORS_CACHE_DURATION = 3600000; // 1 hour in milliseconds
-
-export async function getCachedAuthors(): Promise<AuthorsQueryResult> {
-  const now = Date.now();
-
-  if (authorsCache && now - authorsCacheTime < AUTHORS_CACHE_DURATION) {
-    return authorsCache;
-  }
-
-  try {
-    authorsCache = await getAllAuthors();
-    authorsCacheTime = now;
-    return authorsCache;
-  } catch (error) {
-    console.error("Error fetching cached authors:", error);
-    return authorsCache || []; // Return cached data if available, empty array otherwise
   }
 }
