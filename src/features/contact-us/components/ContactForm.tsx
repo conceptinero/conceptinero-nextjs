@@ -3,11 +3,9 @@
 import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
 import { toast } from "sonner";
 import { Send } from "lucide-react";
 import PhoneInput from "react-phone-number-input";
-import { isValidPhoneNumber } from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import { Button } from "@/components/ui/button";
 import {
@@ -21,38 +19,26 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { submitContactFormJSON } from "@/features/contact-us/actions";
-
-const formSchema = z.object({
-  name: z.string().min(2, "Name is required"),
-  email: z.string().email("Invalid email address"),
-  phone: z
-    .string()
-    .optional()
-    .refine(
-      (value) => !value || isValidPhoneNumber(value),
-      "Please enter a valid phone number"
-    ),
-  company: z.string().min(2, "Company name is required"),
-  message: z.string().min(10, "Message must be at least 10 characters"),
-});
-
-type FormValues = z.infer<typeof formSchema>;
+import Turnstile, { useTurnstile } from "react-turnstile";
+import { ContactFormData, contactFormSchema } from "../schema";
 
 function ContactForm() {
   const [loading, setLoading] = useState(false);
+  const turnstile = useTurnstile();
 
-  const form = useForm<FormValues>({
-    resolver: zodResolver(formSchema),
+  const form = useForm<ContactFormData>({
+    resolver: zodResolver(contactFormSchema),
     defaultValues: {
       name: "",
       email: "",
       phone: undefined,
       company: "",
       message: "",
+      captchaToken: "",
     },
   });
 
-  const onSubmit = async (data: FormValues) => {
+  const onSubmit = async (data: ContactFormData) => {
     setLoading(true);
 
     try {
@@ -68,26 +54,26 @@ function ContactForm() {
           company: "",
           message: "",
         });
-      } else {
-        toast.error(result.message);
+        return;
+      }
 
-        // Handle field-specific errors
-        if (result.errors) {
-          Object.entries(result.errors).forEach(([field, messages]) => {
-            if (field in form.getValues()) {
-              form.setError(field as keyof FormValues, {
-                type: "server",
-                message: messages[0],
-              });
-            }
-          });
-        }
+      toast.error(result.message);
+      if (result.errors) {
+        Object.entries(result.errors).forEach(([field, messages]) => {
+          if (field in form.getValues()) {
+            form.setError(field as keyof ContactFormData, {
+              type: "server",
+              message: messages[0],
+            });
+          }
+        });
       }
     } catch (error) {
       console.error("Form submission error:", error);
       toast.error("Something went wrong. Please try again later.");
     } finally {
       setLoading(false);
+      turnstile.reset();
     }
   };
 
@@ -226,6 +212,13 @@ function ContactForm() {
             )}
           />
 
+          <Turnstile
+            sitekey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY!}
+            onSuccess={(token) => {
+              // setCaptchaToken(token);
+              form.setValue("captchaToken", token); // save inside RHF
+            }}
+          />
           <Button
             type="submit"
             className="w-full bg-blue-600 hover:bg-blue-700 text-white"
