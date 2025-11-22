@@ -1,17 +1,12 @@
 "use server";
 
 import { z } from "zod";
-import { sendContactFormEmails } from "@/features/contact-us/lib/emailService";
-
-const contactFormSchema = z.object({
-  name: z.string().min(2, "Name is required"),
-  email: z.string().email("Invalid email address"),
-  phone: z.string().optional(),
-  company: z.string().min(2, "Company name is required"),
-  message: z.string().min(10, "Message must be at least 10 characters"),
-});
-
-export type ContactFormData = z.infer<typeof contactFormSchema>;
+import { sendUserConfirmationEmail } from "@/features/contact-us/lib/emailService";
+import { AppError } from "@/lib/AppError";
+import { CheckRequestLimit } from "../lib/rateLimit";
+// import { verifyCaptcha } from "../lib/captcha";
+import { ContactFormData } from "../schema";
+import { verifyCaptcha } from "../lib/captcha";
 
 export type ContactFormResult = {
   success: boolean;
@@ -19,71 +14,34 @@ export type ContactFormResult = {
   errors?: Record<string, string[]>;
 };
 
-export async function submitContactForm(
-  prevState: ContactFormResult | null,
-  formData: FormData
-): Promise<ContactFormResult> {
-  try {
-    // Extract form data
-    const rawData = {
-      name: formData.get("name") as string,
-      email: formData.get("email") as string,
-      phone: formData.get("phone") as string,
-      company: formData.get("company") as string,
-      message: formData.get("message") as string,
-    };
+export async function sendToGoogleSheets(data: ContactFormData) {
+  const response = await fetch(process.env.GS_WEBHOOK_URL!, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      ...data,
+      apiKey: process.env.GS_API_KEY,
+    }),
+  });
 
-    // Validate the form data
-    const validatedData = contactFormSchema.parse(rawData);
-
-    // Send emails
-    await sendContactFormEmails(validatedData);
-
-    return {
-      success: true,
-      message:
-        "Thank you for your inquiry! We have received your message and will get back to you within 24 hours.",
-    };
-  } catch (error) {
-    console.error("Contact form submission error:", error);
-
-    if (error instanceof z.ZodError) {
-      const errors: Record<string, string[]> = {};
-      error.errors.forEach((err) => {
-        if (err.path.length > 0) {
-          const field = err.path[0] as string;
-          if (!errors[field]) {
-            errors[field] = [];
-          }
-          errors[field].push(err.message);
-        }
-      });
-
-      return {
-        success: false,
-        message: "Please fix the errors below and try again.",
-        errors,
-      };
-    }
-
-    return {
-      success: false,
-      message:
-        "Something went wrong. Please try again later or contact us directly.",
-    };
+  if (!response.ok || (await response.json()).success === false) {
+    throw new Error("Failed to send data to Google Sheets");
   }
 }
 
-// Alternative server action that accepts JSON data (for use with react-hook-form)
 export async function submitContactFormJSON(
   data: ContactFormData
 ): Promise<ContactFormResult> {
   try {
-    // Validate the form data
-    const validatedData = contactFormSchema.parse(data);
+    await verifyCaptcha(data.captchaToken);
+    await CheckRequestLimit();
 
-    // Send emails
-    await sendContactFormEmails(validatedData);
+    await Promise.all([
+      sendUserConfirmationEmail(data),
+      sendToGoogleSheets(data),
+    ]);
 
     return {
       success: true,
@@ -112,10 +70,16 @@ export async function submitContactFormJSON(
       };
     }
 
-    return {
-      success: false,
-      message:
-        "Something went wrong. Please try again later or contact us directly.",
-    };
+    if (error instanceof AppError) {
+      return {
+        success: false,
+        message: error.message,
+      };
+    } else
+      return {
+        success: false,
+        message:
+          "An unexpected error occurred while submitting the form. Please try again later.",
+      };
   }
 }

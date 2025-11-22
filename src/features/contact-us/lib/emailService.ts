@@ -1,5 +1,5 @@
+import { AppError } from "@/lib/AppError";
 import nodemailer from "nodemailer";
-
 interface ContactFormData {
   name: string;
   email: string;
@@ -99,63 +99,63 @@ const getUserConfirmationEmailHtml = (data: ContactFormData) => `
 `;
 
 // Email template for admin notification
-const getAdminNotificationEmailHtml = (data: ContactFormData) => `
-<!DOCTYPE html>
-<html>
-<head>
-  <style>
-    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
-    .container { max-width: 600px; margin: 0 auto; padding: 20px; }
-    .header { background-color: #dc2626; color: white; padding: 20px; text-align: center; }
-    .content { padding: 20px; background-color: #f9fafb; }
-    .field { margin-bottom: 15px; }
-    .label { font-weight: bold; color: #374151; }
-    .value { margin-top: 5px; }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <div class="header">
-      <h1>New Web Inquiry Received</h1>
-    </div>
-    <div class="content">
-      <p>A new contact form submission has been received from the Conceptinero website.</p>
-      
-      <div class="field">
-        <div class="label">Name:</div>
-        <div class="value">${data.name}</div>
-      </div>
-      
-      <div class="field">
-        <div class="label">Email:</div>
-        <div class="value">${data.email}</div>
-      </div>
-      
-      ${
-        data.phone
-          ? `
-      <div class="field">
-        <div class="label">Phone:</div>
-        <div class="value">${data.phone}</div>
-      </div>
-      `
-          : ""
-      }
-      
-      <div class="field">
-        <div class="label">Company:</div>
-        <div class="value">${data.company}</div>
-      </div>
-      
-      <div class="field">
-        <div class="label">Message:</div>
-        <div class="value">${data.message}</div>
-      </div>
-    </div>
-  </div>
-</body>
-</html>
-`;
+// const getAdminNotificationEmailHtml = (data: ContactFormData) => `
+// <!DOCTYPE html>
+// <html>
+// <head>
+//   <style>
+//     body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+//     .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+//     .header { background-color: #dc2626; color: white; padding: 20px; text-align: center; }
+//     .content { padding: 20px; background-color: #f9fafb; }
+//     .field { margin-bottom: 15px; }
+//     .label { font-weight: bold; color: #374151; }
+//     .value { margin-top: 5px; }
+//   </style>
+// </head>
+// <body>
+//   <div class="container">
+//     <div class="header">
+//       <h1>New Web Inquiry Received</h1>
+//     </div>
+//     <div class="content">
+//       <p>A new contact form submission has been received from the Conceptinero website.</p>
+
+//       <div class="field">
+//         <div class="label">Name:</div>
+//         <div class="value">${data.name}</div>
+//       </div>
+
+//       <div class="field">
+//         <div class="label">Email:</div>
+//         <div class="value">${data.email}</div>
+//       </div>
+
+//       ${
+//         data.phone
+//           ? `
+//       <div class="field">
+//         <div class="label">Phone:</div>
+//         <div class="value">${data.phone}</div>
+//       </div>
+//       `
+//           : ""
+//       }
+
+//       <div class="field">
+//         <div class="label">Company:</div>
+//         <div class="value">${data.company}</div>
+//       </div>
+
+//       <div class="field">
+//         <div class="label">Message:</div>
+//         <div class="value">${data.message}</div>
+//       </div>
+//     </div>
+//   </div>
+// </body>
+// </html>
+// `;
 
 // Send confirmation email to user
 export const sendUserConfirmationEmail = async (data: ContactFormData) => {
@@ -174,40 +174,51 @@ export const sendUserConfirmationEmail = async (data: ContactFormData) => {
     },
   };
 
-  return await transporter.sendMail(mailOptions);
+  const response = await transporter.sendMail(mailOptions);
+
+  if (response.accepted.includes(data.email)) return;
+
+  if (response.rejected.includes(data.email)) {
+    throw new AppError(
+      "It seems the email address you entered is incorrect. Please check it and try again."
+    );
+  } else {
+    throw new AppError(
+      "An unexpected error occurred while submitting the form. Please try again later."
+    );
+  }
 };
 
 // Send notification email to admin
-export const sendAdminNotificationEmail = async (data: ContactFormData) => {
-  const transporter = createTransporter();
+// export const sendAdminNotificationEmail = async (data: ContactFormData) => {
+//   const transporter = createTransporter();
 
-  const mailOptions = {
-    from: `"Conceptinero Website" <${process.env.SMTP_USER}>`,
-    to: "kevin@conceptinero.com",
-    subject: `New Web Inquiry from ${data.name} - ${data.company}`,
-    html: getAdminNotificationEmailHtml(data),
-    headers: {
-      "X-Priority": "1",
-      "X-MSMail-Priority": "High",
-      Importance: "high",
-    },
-  };
+//   const mailOptions = {
+//     from: `"Conceptinero Website" <${process.env.SMTP_USER}>`,
+//     to: "kevin@conceptinero.com",
+//     subject: `New Web Inquiry from ${data.name} - ${data.company}`,
+//     html: getAdminNotificationEmailHtml(data),
+//     headers: {
+//       "X-Priority": "1",
+//       "X-MSMail-Priority": "High",
+//       Importance: "high",
+//     },
+//   };
 
-  return await transporter.sendMail(mailOptions);
-};
+//   return await transporter.sendMail(mailOptions);
+// };
 
 // Main function to send both emails
-export const sendContactFormEmails = async (data: ContactFormData) => {
-  try {
-    // Send both emails in parallel
-    await Promise.all([
-      sendUserConfirmationEmail(data),
-      // sendAdminNotificationEmail(data),
-    ]);
+// export const sendContactFormEmails = async (data: ContactFormData) => {
+//   try {
+//     // Send both emails in parallel
+//     const result = await sendUserConfirmationEmail(data);
+//     // sendAdminNotificationEmail(data),
+//     console.log(result);
 
-    return { success: true };
-  } catch (error) {
-    console.error("Error sending emails:", error);
-    throw new Error("Failed to send emails");
-  }
-};
+//     return { success: true };
+//   } catch (error) {
+//     console.error("Error sending emails:", error);
+//     throw new Error("Failed to send emails");
+//   }
+// };
