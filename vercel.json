@@ -1,0 +1,8 @@
+{
+  "crons": [
+    {
+      "path": "/api/ping-redis",
+      "schedule": "0 0 * * *"
+    }
+  ]
+}
